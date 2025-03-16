@@ -81,7 +81,7 @@
 		disk_initialize();
 		int ret = pf_mount(&fatfs_obj);
 		if (ret != 0) {
-			return ret
+			return ret;
 		}
 		return open_dir((char *)"/");
 	}
