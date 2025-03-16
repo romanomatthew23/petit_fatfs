@@ -55,8 +55,6 @@ void setup()
   
   PFFS.begin(1, rx, tx);
   
-  fileReadTest(PFFS.open_file("test.txt"), "test.txt");
-  
 }
 
 
@@ -99,6 +97,7 @@ void fileReadTest(int err, char * fp)
 
 void loop()
 {
-  
-} 
+  fileReadTest(PFFS.open_file("test.txt"), "test.txt");
 
+  delay(1000);
+} 

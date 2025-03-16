@@ -15,10 +15,10 @@ http://www.arduino.cc/cgi-bin/yabb2/YaBB.pl?num=1251776162
 #define SS_PORT     PORTB
 #define SS_BIT      1
 
-#define SPI_SS      1     // PB1, pin 3
-#define SPI_MISO    4     // PA6, pin 7
-#define SPI_MOSI    5     // PA5, pin 8
-#define SPI_SCK     6     // PA4, pin 9
+#define SPI_SS      1     // PB1, pin 3   9
+#define SPI_MISO    4     // PA6, pin 7   6
+#define SPI_MOSI    5     // PA5, pin 8   5
+#define SPI_SCK     6     // PA4, pin 9   4
 
 
 
@@ -113,10 +113,6 @@ void setup()
   spi_init();
   Serial.begin(9600);
   
-  PFFS.begin(1, rx, tx);
-  
-  fileReadTest(PFFS.open_file("test.txt"), "test.txt");
-  
 }
 
 
@@ -159,6 +155,8 @@ void fileReadTest(int err, char * fp)
 
 void loop()
 {
-  
-} 
+  PFFS.begin(SPI_SS, rx, tx);
+  fileReadTest(PFFS.open_file("test.txt"), "test.txt");
 
+  delay(1000);
+} 
